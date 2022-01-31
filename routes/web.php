@@ -46,6 +46,10 @@ Route::get('/rota2', function() {
 Route::redirect('/rota2', 'rota1');
 */
 
+// rota de fallback (contigência) - se o usuário digitar uma rota que não existe, direciona para uma rota especifica 
+Route::fallback(function() {
+    echo 'A rota acessada não existe <a href="'.route('site.index').'">clique aqui</a> para ir para página inicial';
+});
 
 
 

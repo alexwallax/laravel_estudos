@@ -19,15 +19,34 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', 'PrincipalController@principal');
+//metodo ->name('') nomeia as rotas
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
-
-Route::get('/contato', 'ContatoController@contato');
-// vai conter em contato - nome, categoria, assunto, mensagem
-
-Route::get(
-    '/contato/{nome}/{y}/{assunto}/{mensagem}', 
-    function(string $nome, string $categoria, string $assunto, string $mensagem) {
-    echo "Estamos aqui: .$nome - $categoria - $assunto - $mensagem";
+/*agrupando rotas*/ 
+Route::prefix('/app')->group(function() {
+    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
+    Route::get('/fornecedores', function(){ return 'Fornecedores'; })->name('app.fornecedores');
+    Route::get('/produtos', function(){ return 'Produtos'; })->name('app.produtos');
 });
+
+
+
+
+
+
+
+
+/* Rota teste
+Route::get(
+    '/contato/{nome}/{categoria_id}', 
+    function(
+        string $nome = 'Desconhecido', 
+        int $categoria_id = 1 // 1 - 'Informação'
+    ) {
+    echo "Estamos aqui: $nome - $categoria_id";
+    }
+)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');//o 1º where testa se são númedos e que tenha pelo menos um, e o 2º teste se tem letras de a até z maiusculos e minusculos e que tenha pelo menos uma letra
+*/

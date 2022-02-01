@@ -32,27 +32,30 @@ Route::prefix('/app')->group(function() {
     Route::get('/produtos', function(){ return 'Produtos'; })->name('app.produtos');
 });
 
-// redirecionando rotas - quando entrar na rota2 vai ser redirecionado para rota1
-Route::get('/rota1', function() {
-    echo 'Rota 1';
-})->name('site.rota1');
 
-// primeira forma de redirecionamento de rotas
-Route::get('/rota2', function() {
-    return redirect()->route('site.rota1');
-})->name('site.rota2');
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
 
-/* segunda forma de redirecionamento de rotas
-Route::redirect('/rota2', 'rota1');
-*/
-
-// rota de fallback (contigência) - se o usuário digitar uma rota que não existe, direciona para uma rota especifica 
+// rota de fallback (contingência) - se o usuário digitar uma rota que não existe, direciona para uma rota especifica 
 Route::fallback(function() {
     echo 'A rota acessada não existe <a href="'.route('site.index').'">clique aqui</a> para ir para página inicial';
 });
 
 
 
+
+
+
+
+/*
+// primeira forma de redirecionamento de rotas
+Route::get('/rota2', function() {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+*/
+
+/* segunda forma de redirecionamento de rotas
+Route::redirect('/rota2', 'rota1');
+*/
 
 /* Rota teste
 Route::get(

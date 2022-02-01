@@ -22,9 +22,5 @@ class TesteController extends Controller
         //passar parâmetros através do método compact
         return view('site.teste', compact('p1', 'p2'));
 
-
-
-
-
     }
 }

@@ -21,7 +21,7 @@
 --}}
 
 
-
+{{--
 @if(count($fornecedores) > 0 && count($fornecedores) < 10)
     <h3>Existem alguns fornecedores cadastrados</h3>
 @elseif(count($fornecedores) > 10)
@@ -29,6 +29,21 @@
 @else
     <h3>Ainda não existem fornecedores cadastrados</h3>
 @endif
+--}}
 
 
 {{-- @unless é o inverso do @if, executa se o retorno for false  --}}
+
+
+
+{{-- @isset verifica se a variavel foi definida  --}}
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[1]['nome'] }}
+    <br>
+    Status: {{ $fornecedores[1]['status'] }}
+    <br>
+    @isset($fornecedores[1]['cnpj']) {{--isset testa se o indice cnpj existe, se não existir ele não entra no codigo--}}
+    CNPJ: {{ $fornecedores[1]['cnpj'] }}
+    @endisset
+    <br>
+@endif

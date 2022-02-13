@@ -42,8 +42,12 @@
     <br>
     Status: {{ $fornecedores[1]['status'] }}
     <br>
-    @isset($fornecedores[1]['cnpj']) {{--isset testa se o indice cnpj existe, se não existir ele não entra no codigo--}}
-    CNPJ: {{ $fornecedores[1]['cnpj'] }}
+    @isset($fornecedores[0]['cnpj']) {{--isset testa se o indice cnpj existe, se não existir ele não entra no codigo--}}
+    CNPJ: {{ $fornecedores[0]['cnpj'] }}
+    @empty($fornecedores[0]['cnpj'])
+        - Vazio
+    @endempty
     @endisset
     <br>
 @endif
+

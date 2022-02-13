@@ -42,12 +42,32 @@
     <br>
     Status: {{ $fornecedores[1]['status'] }}
     <br>
-    @isset($fornecedores[0]['cnpj']) {{--isset testa se o indice cnpj existe, se não existir ele não entra no codigo--}}
+
+    {{--isset testa se o indice cnpj existe, se não existir ele não entra no codigo--}}
+    {{--
+    @isset($fornecedores[0]['cnpj']) 
+
     CNPJ: {{ $fornecedores[0]['cnpj'] }}
     @empty($fornecedores[0]['cnpj'])
         - Vazio
     @endempty
     @endisset
-    <br>
+    --}}
+
+    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido' }}
+    <!--
+        $variável testada não estiver definida
+        ou 
+        $variável testada possuir o valor null
+        vai colocar um valor padrão no caso -> 'Dado não foi preenchido'
+    -->
+
+
+
+
+
+
+
+
 @endif
 

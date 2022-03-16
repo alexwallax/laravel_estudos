@@ -5,6 +5,10 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        .x {
+            background-color: #2a9ee2;
+        }
+
         p, span {
             color: #ffffff;
         }
